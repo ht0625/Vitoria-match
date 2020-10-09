@@ -28,10 +28,10 @@ Rails 5.2.4
 - チームの代表者同士のメッセージ機能
 
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1F1wiUUfi05L607cjDQv3FybgcwTlBDGmPVlz3lWgOGs/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1zzqUUktQHLwhF8ZbDbESJonUgYUjsISGzYl0WaqazDA/edit?usp=sharing
 
 ## テーブル定義・ER図・画面遷移図・画面ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1EPI9d3NFjMKjEll3Pp6xJEivF3j6cRSGYhTncK5sSGM/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1_tWGMHK5yoYYcIaq7f-kMKD2cesZEjTSwposoM7n_Hk/edit?usp=sharing
 
 
 ## 使用予定Gem
