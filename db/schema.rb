@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_071043) do
+ActiveRecord::Schema.define(version: 2020_10_16_135623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "feature_teams", force: :cascade do |t|
+    t.bigint "feature_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_feature_teams_on_feature_id"
+    t.index ["team_id"], name: "index_feature_teams_on_team_id"
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string "label", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string "name", default: "", null: false
   end
 
+  add_foreign_key "feature_teams", "features"
+  add_foreign_key "feature_teams", "teams"
 end
