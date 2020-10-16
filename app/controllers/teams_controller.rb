@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_action :set_team, only: [:show, :edit, :update]
 
   def new
     @team = Team.new
@@ -7,18 +8,33 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      redirect_to new_team_path,notice: "チーム登録完了！"
+      redirect_to new_team_path,notice: "チームを登録しました！"
     else
       render  :new
     end
   end
 
   def show
-    @team = Team.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @team.update(team_params)
+     redirect_to team_path(@team.id), notice: "チームを編集しました！"
+    else
+     render :edit
+    end
   end
 
   private
   def team_params
     params.require(:team).permit(:name)
   end
+
+  def set_team
+    @team = Team.find(params[:id])
+  end
+
 end
