@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :teams, only: [:new, :create, :edit, :destroy]
+  resources :teams, only: [:new, :create, :show, :edit, :destroy]
 end
