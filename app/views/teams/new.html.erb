@@ -1,0 +1,7 @@
+<%= form_with(model: @team, local: true) do |form| %>
+  <div class="team_name">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <%= form.submit %>
+<% end %>
