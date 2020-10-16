@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update]
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
 
   def new
     @team = Team.new
@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      redirect_to new_team_path,notice: "チームを登録しました！"
+      redirect_to team_path(@team.id),notice: "チームを登録しました！"
     else
       render  :new
     end
@@ -26,6 +26,11 @@ class TeamsController < ApplicationController
     else
      render :edit
     end
+  end
+
+  def destroy
+    @team.destroy
+    redirect_to new_team_path, notice:"チームを削除しました！"
   end
 
   private
