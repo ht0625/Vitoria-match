@@ -1,7 +1,21 @@
 <%= form_with(model: @team, local: true) do |form| %>
+
+  <% if @team.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= @team.errors.count %>件のエラーがあります。</h2>
+     <ul>
+     <% @team.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+   </div>
+  <% end %>
+
   <div class="team_name">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
+
   <%= form.submit %>
+  
 <% end %>
