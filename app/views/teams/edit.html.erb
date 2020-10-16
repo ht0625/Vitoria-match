@@ -1,3 +1,4 @@
 <h2>チーム編集</h2>
 <%= render 'form' %>
+<%= link_to "戻る", team_path(@team.id) %>
 <%= link_to '削除', team_path(@team.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %>
