@@ -1,0 +1,44 @@
+<%= form_with(model: @invite, local: true) do |form| %>
+
+  <% if @invite.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= @invite.errors.count %>件のエラーがあります。</h2>
+     <ul>
+     <% @invite.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+   </div>
+  <% end %>
+<P>チーム選択</P>
+  <% current_user.teams.all.each do |team| %>
+    <%= form.radio_button :team_id, team.id %>
+    <%= form.label :team_id, team.name, {value: team.id, style: "display: inline-block;"} %>
+  <% end %>
+
+<div class="field">
+  <%= form.label '希望開始日時' %>
+  <%= form.datetime_select :match_day %>
+</div>
+
+<div class="field">
+  <%= form.label  '会場' %>
+  <%= form.text_field :place %>
+</div>
+
+<div class="field">
+  <%= form.label '募集詳細' %>
+  <%= form.text_area :detail %>
+</div>
+
+<!-- <div class="field">
+  <%= form.label :status %>
+  <%= form.check_box :status %>
+</div> -->
+
+<div class="actions">
+  <%= form.submit '登録' %>
+</div>
+
+
+<% end %>

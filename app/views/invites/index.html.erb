@@ -1,20 +1,16 @@
 
-<%= link_to 'New Invite', new_invite_path %><br>
+
 <% @invites.each do |invite| %>
-
-    <%= invite.match_day %><br>
-    <%= invite.place %><br>
-    <%= invite.detail %><br>
-    <%= invite.status %><br>
-    <%= invite.user.name %><br>
-    <%= invite.team.name %><br>
-
-    <% invite.team.features.each do |feature| %>
-      <%= feature.name %>
-    <% end %>
-    <br>
-    <%= link_to 'Show', invite %>
-    <%= link_to 'Edit', edit_invite_path(invite) %>
-    <%= link_to 'Destroy', invite, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if invite.status == true %>
+    <p>チーム名 : <%= invite.team.name %></P>
+    <p>特徴 : <% invite.team.features.each do |feature| %>
+      <%= feature.label %>
+    <% end %></P>
+    <p>希望開始日時 : <%= invite.match_day.strftime('%Y/%m/%d %H:%M') %></P>
+    <p>会場 : <%= invite.place %></P>
+    <p>詳細 : <%= invite.detail %></P>
+    <%= link_to '詳細', invite %><br><br>
+  <% end %>
 
 <% end %>
+<%= link_to '募集作成', new_invite_path %><br>
