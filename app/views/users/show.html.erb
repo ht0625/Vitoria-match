@@ -1,0 +1,12 @@
+<h1>プロフィール</h1>
+<%= link_to "チーム登録", new_team_path %>
+<p>名前 : <%= @user.name %></p>
+<p>メールアドレス : <%= @user.email %></p>
+<p>チーム名 </p>
+  <% @user.teams.each do |team| %>
+    <%= team.name %>
+    <%= link_to "詳細", team_path(team.id) %><br>
+  <% end %>
+<% if current_user.id == @user.id %>
+  <%= link_to "編集", edit_user_registration_path %>
+<% end %>

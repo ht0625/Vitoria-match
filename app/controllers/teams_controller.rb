@@ -1,12 +1,12 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   def new
     @team = Team.new
   end
 
   def create
-    @team = Team.new(team_params)
+    @team = current_user.teams.build(team_params)
     if @team.save
       redirect_to team_path(@team.id),notice: "チームを登録しました！"
     else

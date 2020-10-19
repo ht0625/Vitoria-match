@@ -1,7 +1,14 @@
 require 'rails_helper'
-RSpec.describe 'チーム管理機能', type: :system do
+RSpec.describe '特徴ラベル機能', type: :system do
+  let!(:user) { FactoryBot.create(:user) }
   let!(:feature) { FactoryBot.create(:feature) }
   let!(:feature2) { FactoryBot.create(:feature2) }
+  before do
+    visit new_user_session_path
+    fill_in 'user[email]', with: 'test1@example.com'
+    fill_in 'user[password]', with: 'test01'
+    click_on 'commit'
+  end
   describe '特徴ラベル登録機能' do
     context 'チームを新規登録するとき' do
       it 'チームと一緒に特徴ラベルを登録できる' do
