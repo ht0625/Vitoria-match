@@ -22,8 +22,18 @@ class InvitesController < ApplicationController
   def show
   end
 
-  private
+  def edit
+  end
 
+  def update
+    if @invite.update(invite_params)
+     redirect_to invite_path(@invite.id), notice: "募集を編集しました！"
+    else
+     render :edit
+    end
+  end
+
+  private
   def set_invite
     @invite = Invite.find(params[:id])
   end
