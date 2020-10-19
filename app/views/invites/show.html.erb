@@ -1,0 +1,49 @@
+
+<p>
+  <strong>チーム名:</strong>
+  <%= @invite.team.name %>
+</p>
+
+<p>
+  <strong>特徴:</strong>
+  <% @invite.team.features.each do |feature| %>
+   <%= feature.label %>
+ <% end %>
+</p>
+
+
+<p>
+  <strong>希望開始日時:</strong>
+  <%= @invite.match_day.strftime('%Y/%m/%d %H:%M') %>
+</p>
+
+<p>
+  <strong>会場:</strong>
+  <%= @invite.place %>
+</p>
+
+<p>
+  <strong>募集詳細:</strong>
+  <%= @invite.detail %>
+</p>
+
+<p>
+  <strong>募集状況:</strong>
+  <%if @invite.status == true %>
+    <%= '募集中' %>
+  <% else %>
+    <%= '募集終了' %>
+  <% end %>
+
+</p>
+
+<p>
+  <strong>代表者名</strong>
+  <%= @invite.user.name %>
+</p>
+
+
+<%= link_to '戻る', invites_path %>
+<% if current_user.id == @invite.user.id %>
+  <%= link_to '編集', edit_invite_path(@invite) %>
+<% end %>
