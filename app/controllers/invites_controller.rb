@@ -33,6 +33,11 @@ class InvitesController < ApplicationController
     end
   end
 
+  def destroy
+    @invite.destroy
+    redirect_to invites_path, notice:"募集を削除しました！"
+  end
+
   private
   def set_invite
     @invite = Invite.find(params[:id])
