@@ -44,4 +44,6 @@
 
 
 <%= link_to '戻る', invites_path %>
-<%= link_to '編集', edit_invite_path(@invite) %>
+<% if current_user.id == @invite.user.id %>
+  <%= link_to '編集', edit_invite_path(@invite) %>
+<% end %>
