@@ -1,4 +1,6 @@
 class InvitesController < ApplicationController
+  before_action :set_invite, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
 
   def index
     @invites = Invite.all
@@ -17,7 +19,15 @@ class InvitesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
+
+  def set_invite
+    @invite = Invite.find(params[:id])
+  end
+
   def invite_params
     params.require(:invite).permit(:match_day, :place, :detail, :status, :user_id, :team_id)
   end
