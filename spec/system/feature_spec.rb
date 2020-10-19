@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'チーム管理機能', type: :system do
+RSpec.describe '特徴ラベル機能', type: :system do
   let!(:user) { FactoryBot.create(:user) }
   let!(:feature) { FactoryBot.create(:feature) }
   let!(:feature2) { FactoryBot.create(:feature2) }
