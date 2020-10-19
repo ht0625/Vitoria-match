@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_233908) do
+ActiveRecord::Schema.define(version: 2020_10_19_022939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 2020_10_18_233908) do
     t.string "label", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.datetime "match_day", null: false
+    t.string "place", default: "", null: false
+    t.text "detail", default: "", null: false
+    t.boolean "status", default: true, null: false
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_invites_on_team_id"
+    t.index ["user_id"], name: "index_invites_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -56,5 +69,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_233908) do
 
   add_foreign_key "feature_teams", "features"
   add_foreign_key "feature_teams", "teams"
+  add_foreign_key "invites", "teams"
+  add_foreign_key "invites", "users"
   add_foreign_key "teams", "users"
 end

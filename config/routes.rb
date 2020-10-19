@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'users/show'
+  resources :invites
   devise_for :users
   resources :users, only: [:show]
   resources :teams, only: [:new, :create, :show, :edit, :update, :destroy]
