@@ -3,7 +3,8 @@ class InvitesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
 
   def index
-    @invites = Invite.all
+    @q = Invite.ransack(params[:q])
+    @invites = @q.result(distinct: true)
   end
 
   def new
