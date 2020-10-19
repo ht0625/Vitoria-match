@@ -10,15 +10,18 @@
   </head>
 
   <body>
-
-    <% if user_signed_in? %>
-      <%= link_to "プロフィール", user_path(current_user.id) %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
-
+    <header>
+      <div class ="header-logo">Vitoria-match</div>
+      <% if user_signed_in? %>
+        <%= link_to "プロフィール", user_path(current_user.id) %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "募集作成", new_invite_path %>
+        <%= link_to "募集一覧", invites_path %>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "ログイン", new_user_session_path %>
+      <% end %>
+    </header>
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>
