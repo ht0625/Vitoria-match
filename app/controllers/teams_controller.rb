@@ -3,6 +3,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   def new
     @team = Team.new
+    @features = Feature.all
   end
 
   def create
