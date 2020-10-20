@@ -7,6 +7,6 @@
     <%= team.name %>
     <%= link_to "詳細", team_path(team.id) %><br>
   <% end %>
-<% if current_user.id == @user.id %>
-  <%= link_to "編集", edit_user_registration_path %>
-<% end %>
+<%= link_to "編集", edit_user_registration_path %>
+<br>
+<%= link_to "メッセージ一覧", conversations_path %>
