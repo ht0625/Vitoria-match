@@ -1,6 +1,7 @@
 class InvitesController < ApplicationController
-  before_action :set_invite, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :set_invite, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_current_user, only: [:edit, :update, :destroy]
 
   def index
     @q = Invite.ransack(params[:q])
@@ -42,6 +43,10 @@ class InvitesController < ApplicationController
   private
   def set_invite
     @invite = Invite.find(params[:id])
+  end
+
+  def ensure_current_user
+    redirect_to invites_path, notice: "アクセス権限がありません！" if @invite.user_id != current_user.id
   end
 
   def invite_params

@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
   def new
     @team = Team.new
   end
@@ -40,6 +40,7 @@ class TeamsController < ApplicationController
 
   def set_team
     @team = Team.find(params[:id])
+    redirect_to invites_path, notice: "アクセス権限がありません！" if @team.user_id != current_user.id
   end
 
 end
