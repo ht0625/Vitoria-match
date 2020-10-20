@@ -59,8 +59,8 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     context 'ログインしている時' do
       it 'ログアウトできること' do
         click_on 'ログアウト'
-        expect(current_path).to eq new_user_session_path
-        expect(page).to have_content 'アカウント登録もしくはログインしてください。'
+        expect(current_path).to eq root_path
+        expect(page).to have_content 'ログアウトしました。'
       end
     end
   end

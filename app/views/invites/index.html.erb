@@ -1,4 +1,5 @@
 <h2>募集一覧</h2>
+<%= link_to '募集作成', new_invite_path %><br>
 <%= search_form_for @q do |f| %>
   <%= f.label :label, "特徴検索" %>
   <%= f.select :team_features_label_cont, options_from_collection_for_select(Feature.all, :label, :label , 1) %>
@@ -18,4 +19,3 @@
   <% end %>
 
 <% end %>
-<%= link_to '募集作成', new_invite_path %><br>

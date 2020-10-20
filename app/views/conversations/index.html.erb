@@ -1,0 +1,9 @@
+<h2>メッセージ一覧</h2>
+<% @conversations.each do |conversation| %>
+    <% if conversation.target_user(current_user).present? %>
+      <%= link_to conversation.target_user(current_user).name, conversation_messages_path(conversation)%>
+      <% if conversation.messages.last.read == false && conversation.messages.last.user_id != current_user.id %>
+        <%= "未読あり" %>
+      <% end %><br>
+    <% end %>
+<% end %>

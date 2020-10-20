@@ -12,12 +12,13 @@
   <% end %>
 
   <div class="team_name">
-    <%= form.label :name %>
+    <%= form.label 'チーム名：' %>
     <%= form.text_field :name %>
   </div>
 
   <div class="team_feature">
-    <%= form.collection_check_boxes(:feature_ids, Feature.all, :id, :label) %>
+    <%= form.label '特徴：' %>
+    <%= form.collection_check_boxes(:feature_ids, @features, :id, :label) %>
   </div>
 
   <%= form.submit '登録' %>

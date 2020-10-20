@@ -46,4 +46,6 @@
 <%= link_to '戻る', invites_path %>
 <% if current_user.id == @invite.user.id %>
   <%= link_to '編集', edit_invite_path(@invite) %>
+<% else %>
+  <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @invite.user.id), method: :post %>
 <% end %>
