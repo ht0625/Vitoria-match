@@ -13,6 +13,11 @@ RSpec.describe '募集管理機能', type: :system do
       it '登録した募集が募集一覧画面に表示される' do
         visit new_invite_path
         choose('team1名前')
+        select '2021', from: 'invite[match_day(1i)]'
+        select '12', from: 'invite[match_day(2i)]'
+        select '20', from: 'invite[match_day(3i)]'
+        select '00', from: 'invite[match_day(4i)]'
+        select '00', from: 'invite[match_day(5i)]'
         fill_in 'invite[place]', with: '会場１'
         fill_in 'invite[detail]', with: '詳細１'
         click_on '登録'
@@ -25,7 +30,7 @@ RSpec.describe '募集管理機能', type: :system do
   describe '募集詳細画面表示機能' do
     context '募集詳細画面に遷移した場合' do
       it '登録した募集情報が詳細画面に表示される' do
-        FactoryBot.create(:invite, place: '詳細画面の表示確認', user: user, team: team)
+        FactoryBot.create(:invite, match_day: '2021-12-20 15:00:00', place: '詳細画面の表示確認', user: user, team: team)
         visit invite_path(Invite.last.id)
         expect(page).to have_content '詳細画面の表示確認'
       end
@@ -34,7 +39,7 @@ RSpec.describe '募集管理機能', type: :system do
   describe '募集編集機能' do
     context '募集情報を編集した場合' do
       it '編集した募集情報が募集詳細画面に表示される' do
-        FactoryBot.create(:invite, detail: '編集前', user: user, team: team)
+        FactoryBot.create(:invite, match_day: '2021-12-20 15:00:00', detail: '編集前', user: user, team: team)
         visit edit_invite_path(Invite.last.id)
         fill_in 'invite[detail]', with: '編集後'
         click_on '登録'
@@ -45,8 +50,8 @@ RSpec.describe '募集管理機能', type: :system do
   describe 'チーム削除機能' do
     context 'チームを削除した場合' do
       it '削除したチームが存在しないこと' do
-        FactoryBot.create(:invite, detail: '1つ目の登録', user: user, team: team)
-        FactoryBot.create(:invite, detail: '2つ目の登録', user: user, team: team)
+        FactoryBot.create(:invite, match_day: '2021-12-20 15:00:00', detail: '1つ目の登録', user: user, team: team)
+        FactoryBot.create(:invite, match_day: '2021-12-20 15:00:00', detail: '2つ目の登録', user: user, team: team)
         visit edit_invite_path(Invite.last.id)
         page.accept_confirm do
           click_on '削除'

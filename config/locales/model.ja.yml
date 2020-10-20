@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      invite: 募集
+      team: チーム
+    attributes:
+      invite:
+        match_day: 希望開始日時
+        place: 会場
+        detail: 詳細
+        status: 募集状況
+        team: チーム名
+      team:
+        name: チーム名
