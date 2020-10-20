@@ -11,10 +11,15 @@
    </div>
   <% end %>
 <P>チーム選択</P>
+<% if current_user.teams.empty? %>
+  <p>募集を作成するにはチーム登録が必要です</p>
+  <%= link_to "チームを登録", new_team_path %>
+<% else %>
   <% current_user.teams.all.each do |team| %>
     <%= form.radio_button :team_id, team.id %>
     <%= form.label :team_id, team.name, {value: team.id, style: "display: inline-block;"} %>
   <% end %>
+<% end %>
 
 <div class="field">
   <%= form.label '希望開始日時' %>
