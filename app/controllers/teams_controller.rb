@@ -19,6 +19,7 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    @features = Feature.all
   end
 
   def update
