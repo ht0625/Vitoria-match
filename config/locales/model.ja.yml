@@ -1,14 +1,26 @@
 ja:
   activerecord:
     models:
+      conversation: 会話
+      feature_team: 特徴とチーム紐付け
+      feature: 特徴
       invite: 募集
+      message: メッセージ
       team: チーム
     attributes:
+      conversation:
+        sender_id: 送信者ID
+        recipient_id: 受信者ID
+      feature:
+        label: 特徴
       invite:
         match_day: 希望開始日時
         place: 会場
-        detail: 詳細
+        detail: 募集詳細
         status: 募集状況
         team: チーム名
+      message:
+        body: 内容
+        read: 既読
       team:
         name: チーム名
