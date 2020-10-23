@@ -1,51 +1,72 @@
-<%= form_with(model: @invite, local: true) do |form| %>
 
-  <% if @invite.errors.any? %>
-   <div id="error_explanation">
-     <h2><%= @invite.errors.count %>件のエラーがあります。</h2>
-     <ul>
-     <% @invite.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-     <% end %>
-     </ul>
-   </div>
-  <% end %>
-<P>チーム選択</P>
-<% if current_user.teams.empty? %>
-  <p>募集を作成するにはチーム登録が必要です</p>
-  <%= link_to "チームを登録", new_team_path %>
-<% else %>
-  <% current_user.teams.all.each do |team| %>
-    <%= form.radio_button :team_id, team.id %>
-    <%= form.label :team_id, team.name, {value: team.id, style: "display: inline-block;"} %>
-  <% end %>
-<% end %>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= form_with(model: @invite, local: true) do |form| %>
 
-<div class="field">
-  <%= form.label '希望開始日時' %>
-  <%= form.datetime_select :match_day %>
-</div>
+        <% if @invite.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= @invite.errors.count %>件のエラーがあります。</h2>
+          <ul>
+            <% @invite.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
 
-<div class="field">
-  <%= form.label  '会場' %>
-  <%= form.text_field :place %>
-</div>
+        <% end %>
+        <div class="box">
+          <%= form.label 'チーム選択', class: "label" %>
+          <% if current_user.teams.empty? %>
+          <p>募集を作成するにはチーム登録が必要です</p>
+          <%= link_to "チームを登録", new_team_path %>
+          <% else %>
+          <% current_user.teams.all.each do |team| %>
+          <div class="radio pr-5">
+            <%= form.radio_button :team_id, team.id,class: "radio p-5" %>
+            <%= form.label :team_id, team.name, {value: team.id, style: "display: inline-block;"} %>
+          </div>
+          <% end %>
+          <% end %>
+          <div class="field">
+            <%= form.label '希望開始日時', class: "label" %>
+            <!-- <div class="select is-small">
+            <div class="field is-horizontal"> -->
+            <%= form.datetime_select :match_day %>
+            <!-- </div>
+          </div> -->
+        </div>
 
-<div class="field">
-  <%= form.label '募集詳細' %>
-  <%= form.text_area :detail %>
-</div>
+        <div class="field">
+          <%= form.label  '会場', class: "label" %>
+          <%= form.text_field :place, class: "input" %>
+        </div>
 
-<% if action_name == 'edit' %>
-  <div class="field">
-    <%= form.label '募集状況' %>
-    <%= form.check_box :status %>  ※クローズする場合はチェックを外してください
+        <div class="field">
+          <%= form.label '募集詳細', class: "label" %>
+          <%= form.text_area :detail, class: "textarea" %>
+        </div>
+
+        <% if action_name == 'edit' %>
+        <div class="field">
+          <%= form.label '募集中', class: "label" %>
+          <%= form.check_box :status %>  ※募集をクローズする場合はチェックを外してください
+        </div>
+        <% end %>
+
+        <div class="actions has-text-centered">
+          <% if action_name == 'edit' %>
+          <%= link_to "戻る", invite_path(@invite.id), class: "button is-primary is-light is-outlined" %>
+          <%= form.submit '更新', class: "button is-info is-light is-outlined" %>
+          <%= link_to '削除', invite_path(@invite.id), method: :delete, data: { confirm: '本当に編集していいですか？' }, class: "button is-danger is-light is-outlined" %>
+          <% else %>
+          <%= form.submit '登録', class: "button is-info is-light is-outlined " %>
+          <% end %>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<div class="actions">
-  <%= form.submit '登録' %>
-</div>
-
-
-<% end %>
+</section>

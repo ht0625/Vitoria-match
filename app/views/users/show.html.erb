@@ -1,12 +1,26 @@
-<h1>プロフィール</h1>
-<%= link_to "チーム登録", new_team_path %>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>チーム名 </p>
-  <% @user.teams.each do |team| %>
-    <%= team.name %>
-    <%= link_to "詳細", team_path(team.id) %><br>
-  <% end %>
-<%= link_to "編集", edit_user_registration_path %>
-<br>
-<%= link_to "メッセージ一覧", conversations_path %>
+<div class="title has-text-centered pt-6">
+  <h1>プロフィール</h1>
+</div>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <%= link_to "チーム登録", new_team_path, class: "button is-info is-small" %><br><br>
+        <div class="box">
+          <p>名前 : <%= @user.name %></p>
+          <p>メールアドレス : <%= @user.email %></p><br><br>
+          <p>チーム名 </p>
+          <% @user.teams.each do |team| %>
+          <%= team.name %>
+          <%= link_to "詳細", team_path(team.id) %><br>
+          <% end %><br>
+
+          <div class="actions has-text-centered">
+            <%= link_to "編集", edit_user_registration_path, class: "button is-info is-light is-outlined" %>
+            <%= link_to "メッセージ一覧", conversations_path, class: "button is-success is-light is-outlined" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

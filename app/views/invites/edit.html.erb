@@ -1,4 +1,4 @@
-<h2>募集編集</h2>
+<div class="title has-text-centered pt-6">
+  <h2>募集編集</h2>
+</div>
 <%= render 'form' %>
-<%= link_to "戻る", invite_path(@invite.id) %>
-<%= link_to '削除', invite_path(@invite.id), method: :delete, data: { confirm: '本当に編集していいですか？' } %>

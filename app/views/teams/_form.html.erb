@@ -1,26 +1,47 @@
-<%= form_with(model: @team, local: true) do |form| %>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4">
+        <%= form_with(model: @team, local: true) do |form| %>
 
-  <% if @team.errors.any? %>
-   <div id="error_explanation">
-     <h2><%= @team.errors.count %>件のエラーがあります。</h2>
-     <ul>
-     <% @team.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-     <% end %>
-     </ul>
-   </div>
-  <% end %>
+        <% if @team.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= @team.errors.count %>件のエラーがあります。</h2>
+          <ul>
+            <% @team.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
 
-  <div class="team_name">
-    <%= form.label 'チーム名：' %>
-    <%= form.text_field :name %>
+        <div class="team_name">
+          <%= form.label 'チーム名', class: "label" %>
+          <%= form.text_field :name, class: "input" %>
+        </div><br>
+
+        <div class="team_feature">
+          <%= form.label '特徴', class: "label" %>
+          <div class="checkbox">
+            <%= form.collection_check_boxes(:feature_ids, @features, :id, :label) %>
+          </div>
+        </div>
+
+        <div class="actions has-text-centered mt-6">
+          <% if action_name == 'edit' %>
+          <%= link_to "戻る", team_path(@team.id), class: "button is-primary is-light is-outlined" %>
+          <%= form.submit '更新', class: "button is-info is-light is-outlined" %>
+          <%= link_to '削除', team_path(@team.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: "button is-danger is-light is-outlined" %>
+          <% else %>
+          <%= form.submit '登録', class: "button is-info is-light is-outlined " %>
+          <% end %>
+        </div>
+
+        <% end %>
+
+
+
+      </div>
+    </div>
   </div>
-
-  <div class="team_feature">
-    <%= form.label '特徴：' %>
-    <%= form.collection_check_boxes(:feature_ids, @features, :id, :label) %>
-  </div>
-
-  <%= form.submit '登録' %>
-
-<% end %>
+</section>

@@ -1,51 +1,60 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <div class="box">
+          <p>
+            <strong>チーム名</strong><br>
+            <%= @invite.team.name %>
+          </p><br>
 
-<p>
-  <strong>チーム名:</strong>
-  <%= @invite.team.name %>
-</p>
-
-<p>
-  <strong>特徴:</strong>
-  <% @invite.team.features.each do |feature| %>
-   <%= feature.label %>
- <% end %>
-</p>
-
-
-<p>
-  <strong>希望開始日時:</strong>
-  <%= @invite.match_day.strftime('%Y/%m/%d %H:%M') %>
-</p>
-
-<p>
-  <strong>会場:</strong>
-  <%= @invite.place %>
-</p>
-
-<p>
-  <strong>募集詳細:</strong>
-  <%= @invite.detail %>
-</p>
-
-<p>
-  <strong>募集状況:</strong>
-  <%if @invite.status == true %>
-    <%= '募集中' %>
-  <% else %>
-    <%= '募集終了' %>
-  <% end %>
-
-</p>
-
-<p>
-  <strong>代表者名</strong>
-  <%= @invite.user.name %>
-</p>
+          <p>
+            <strong>特徴</strong><br>
+            <% @invite.team.features.each do |feature| %>
+            <%= feature.label %>
+            <% end %>
+          </p><br>
 
 
-<%= link_to '戻る', invites_path %>
-<% if current_user.id == @invite.user.id %>
-  <%= link_to '編集', edit_invite_path(@invite) %>
-<% else %>
-  <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @invite.user.id), method: :post %>
-<% end %>
+          <p>
+            <strong>希望開始日時</strong><br>
+            <%= @invite.match_day.strftime('%Y/%m/%d %H:%M') %>
+          </p><br>
+
+          <p>
+            <strong>会場</strong><br>
+            <%= @invite.place %>
+          </p><br>
+
+          <p>
+            <strong>募集詳細</strong><br>
+            <%= @invite.detail %>
+          </p><br>
+
+          <p>
+            <strong>募集状況</strong><br>
+            <%if @invite.status == true %>
+            <%= '募集中' %>
+            <% else %>
+            <%= '募集終了' %>
+            <% end %>
+          </p><br>
+
+          <p>
+            <strong>代表者名</strong><br>
+            <%= @invite.user.name %>
+          </p><br>
+
+          <div class="actions has-text-centered">
+            <%= link_to '戻る', invites_path, class: "button is-primary is-light is-outlined" %>
+            <% if current_user.id == @invite.user.id %>
+            <%= link_to '編集', edit_invite_path(@invite), class: "button is-info is-light is-outlined" %>
+            <% else %>
+            <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @invite.user.id), method: :post, class: "button is-info is-light is-outlined" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

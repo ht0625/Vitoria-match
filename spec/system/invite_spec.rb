@@ -42,7 +42,7 @@ RSpec.describe '募集管理機能', type: :system do
         FactoryBot.create(:invite, match_day: '2021-12-20 15:00:00', detail: '編集前', user: user, team: team)
         visit edit_invite_path(Invite.last.id)
         fill_in 'invite[detail]', with: '編集後'
-        click_on '登録'
+        click_on '更新'
         expect(page).to have_content '編集後'
       end
     end

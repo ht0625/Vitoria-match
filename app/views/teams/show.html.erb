@@ -1,8 +1,31 @@
-<h1>チーム詳細画面</h1>
-<p>チーム名: <%= @team.name %></p>
-<p>特徴:
-  <% @team.features.each do |feature| %>
-    <%= feature.label %>
-  <% end %>
-</p>
-<%= link_to "編集", edit_team_path(@team.id) %>
+<div class="title has-text-centered pt-6">
+  <h1>チーム詳細画面</h1>
+</div>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4">
+        <div class="box">
+
+          <p>
+            <strong>チーム名</strong><br>
+            <%= @team.name %>
+          </p><br>
+
+          <p>
+            <strong>特徴</strong><br>
+            <% @team.features.each do |feature| %>
+            <%= feature.label %>
+            <% end %>
+          </p><br>
+
+
+          <div class="actions has-text-centered mt-6">
+            <%= link_to "編集", edit_team_path(@team.id), class: "button is-info is-light is-outlined" %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

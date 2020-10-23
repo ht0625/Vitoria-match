@@ -4,24 +4,31 @@
     <title>VitoriaMatch</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/484e6509e8.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <div class ="header-logo">Vitoria-match</div>
-      <% if user_signed_in? %>
-        <%= link_to "プロフィール", user_path(current_user.id) %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <%= link_to "募集作成", new_invite_path %>
-        <%= link_to "募集一覧", invites_path %>
-      <% else %>
-        <%= link_to "新規登録", new_user_registration_path %>
-        <%= link_to "ログイン", new_user_session_path %>
-      <% end %>
+      <nav class="navbar is-dark">
+        <div class="navbar-brand">
+          <p class="navbar-item">Vitoria-match</p>
+        </div>
+        <div class="navbar-end">
+          <% if user_signed_in? %>
+            <%= link_to "プロフィール", user_path(current_user.id), class: "navbar-item" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "navbar-item" %>
+            <%= link_to "募集作成", new_invite_path, class: "navbar-item" %>
+          <% else %>
+            <%= link_to "新規登録", new_user_registration_path, class: "navbar-item" %>
+            <%= link_to "ログイン", new_user_session_path, class: "navbar-item" %>
+          <% end %>
+            <%= link_to "募集一覧", invites_path, class: "navbar-item" %>
+        </div>
+      </nav>
     </header>
+    
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>
