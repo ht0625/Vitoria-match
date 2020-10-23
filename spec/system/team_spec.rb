@@ -32,7 +32,7 @@ RSpec.describe 'チーム管理機能', type: :system do
         FactoryBot.create(:team, user: user)
         visit edit_team_path(Team.last.id)
         fill_in 'team_name', with: '編集後名前'
-        click_on '登録'
+        click_on '更新'
         expect(page).to have_content '編集後名前'
       end
     end
