@@ -2,43 +2,67 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-4">
-        <div class="box has-text-centered">
-          <% if @over_ten %>
-          <%= link_to '以前のメッセージ', '?m=all' %>
-          <% end %>
-          <div class="ui segment">
-            <% @messages.each do |message| %>
-            <% if message.body.present? %>
-            <div class="item">
-              <div class="content">
-                <div class="header"><strong><%= message.user.name %></strong> <%= message.message_time %></div>
-                <div class="list">
-                  <div class="item">
-                    <i class="right triangle icon"></i>
-                    <%= message.body %>
-                    <% if message.user == current_user %>
-                    <%= message.read ? '既読' : '未読' %>
-                    <% end %>
+
+        <% if @over_ten %>
+        <%= link_to '以前のメッセージ', '?m=all' %>
+        <% end %>
+        <div class="ui segment">
+          <% @messages.each do |message| %>
+          <% if message.body.present? %>
+          <% if message.user.id == current_user.id %>
+          <div class="box has-text-right">
+            <% else %>
+            <div class="box has-text-left">
+              <% end %>
+              <div class="item">
+                <div class="content">
+
+                  <% if message.user.id == current_user.id %>
+                  <div class="header"><%= message.message_time %>   <strong><%= message.user.name %></strong></div>
+                  <% else %>
+                  <div class="header"><strong><%= message.user.name %></strong> <%= message.message_time %></div>
+                  <% end %>
+
+                  <% if message.user.id == current_user.id %>
+                  <div class="list">
+                    <div class="item">
+                      <i class="right triangle icon"></i>
+                      <% if message.user == current_user %>
+                      <%= message.read ? '既読' : '未読' %>
+                      <% end %>
+                      <%= message.body %>
+                    </div>
                   </div><br>
+                  <% else %>
+                  <div class="list">
+                    <div class="item">
+                      <!-- <i class="right triangle icon"></i> -->
+                      <%= message.body %>
+                      <% if message.user == current_user %>
+                      <%= message.read ? '既読' : '未読' %>
+                      <% end %>
+                    </div>
+                  </div><br>
+                  <% end %>
                 </div>
               </div>
             </div>
             <% end %>
             <% end %>
           </div>
-        </div>
-        <div class="box has-text-centered mt-6">
-          <%= form_with(model: [@conversation, @message]) do |f| %>
-          <div class="field">
-            <%= f.text_area :body, class: "form-control", class: "textarea" %>
+
+          <div class="box has-text-centered mt-6">
+            <%= form_with(model: [@conversation, @message]) do |f| %>
+            <div class="field">
+              <%= f.text_area :body, class: "form-control", class: "textarea" %>
+            </div>
+            <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+            <div class="actions has-text-centered">
+              <%= f.submit "メッセージを送る", class: "button is-success is-light is-outlined" %>
+            </div>
+            <% end %>
           </div>
-          <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-          <div class="actions has-text-centered">
-            <%= f.submit "メッセージを送る", class: "button is-success is-light is-outlined" %>
-          </div>
-          <% end %>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
