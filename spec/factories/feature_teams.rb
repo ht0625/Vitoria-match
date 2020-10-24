@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :feature_team do
-    feature { nil }
-    team { nil }
+    feature { 1 }
+    team { 1 }
   end
 end

@@ -9,8 +9,8 @@ ja:
       team: チーム
     attributes:
       conversation:
-        sender_id: 送信者ID
-        recipient_id: 受信者ID
+        sender: 送信者
+        recipient: 受信者
       feature:
         label: 特徴
       invite:
