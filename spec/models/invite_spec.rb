@@ -23,4 +23,14 @@ RSpec.describe Invite, type: :model do
   invite = Invite.new(match_day: '2021-12-20 15:00:00', detail: 'A' * 401, user: user, team: team)
     expect(invite).not_to be_valid
   end
+  it "未来の日時が入力されたときに登録できること" do
+  date_time = DateTime.now + 1
+  invite = Invite.new(match_day: date_time, user: user, team: team)
+    expect(invite).to be_valid
+  end
+  it "過去の日時が入力されたときに登録できないこと" do
+  date_time = DateTime.now - 1
+  invite = Invite.new(match_day: date_time, user: user, team: team)
+    expect(invite).not_to be_valid
+  end
 end
