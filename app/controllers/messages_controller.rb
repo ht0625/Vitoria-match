@@ -6,9 +6,9 @@ class MessagesController < ApplicationController
 
   def index
     @messages = @conversation.messages
-    if @messages.length > 10
+    if @messages.length > 4
       @over_ten = true
-      @messages = Message.where(id: @messages[-10..-1].pluck(:id))
+      @messages = Message.where(id: @messages[-4..-1].pluck(:id))
     end
     if params[:m]
       @over_ten = false
@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to conversation_messages_path(@conversation)
     else
+      @messages = @conversation.messages
       render 'index'
     end
   end
