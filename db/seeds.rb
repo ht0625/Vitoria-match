@@ -5,7 +5,7 @@ features.each do |feature|
   )
 end
 
-5.times do |n|
+10.times do |n|
   name = Faker::Sports::Football.player
   email = Faker::Internet.email
   password = "password"
@@ -14,23 +14,53 @@ end
                password: password,
                password_confirmation: password,
                )
-  2.times do |n|
-    name = Faker::Sports::Football.team
-    Team.create!(
-      name: name,
-      user_id:  User.last.id
-    )
-    FeatureTeam.create!(
-      team_id:  Team.last.id,
-      feature_id:  Feature.last.id
-    )
-  end
+end
+
+
+users = User.all
+users.each do |user|
+  name = Faker::Sports::Football.team
+  Team.create!(
+    name: name,
+    user_id:  user.id
+  )
+  FeatureTeam.create!(
+    team_id:  Team.last.id,
+    feature_id:  Feature.last.id
+  )
+end
+
+users.each do |user|
   place = Faker::Address.city
   Invite.create!(
-    match_day: '2020-12-20 15:00:00',
+    match_day: '2020-12-31 15:00:00',
     place:  place,
-    detail:  "1#{n}人参加予定です。詳細は連絡でお願いします。",
-    user_id: User.last.id,
-    team_id: Team.last.id
+    detail:  "こんにちは。詳細はメッセージでお願いします。",
+    user_id: user.id,
+    team_id: user.teams.last.id
+  )
+end
+
+feature_id = Feature.last.id - 1
+users.each do |user|
+  name = Faker::Sports::Football.team
+  Team.create!(
+    name: name,
+    user_id:  user.id
+  )
+  FeatureTeam.create!(
+    team_id:  Team.last.id,
+    feature_id:  feature_id
+  )
+end
+
+users.each do |user|
+  place = Faker::Address.city
+  Invite.create!(
+    match_day: '2021-12-20 15:00:00',
+    place:  place,
+    detail:  "こんにちは。詳細はメッセージでお願いします。",
+    user_id: user.id,
+    team_id: user.teams.last.id
   )
 end
