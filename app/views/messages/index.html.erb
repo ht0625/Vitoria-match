@@ -51,7 +51,7 @@
           <div class="box has-text-centered mt-6">
             <%= form_with(model: [@conversation, @message]) do |f| %>
               <div class="field">
-                <%= f.text_area :body, class: "form-control", class: "textarea" %>
+                <%= f.text_area :body, class: "form-control textarea" %>
               </div>
             <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
               <div class="actions has-text-centered">
