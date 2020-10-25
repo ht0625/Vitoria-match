@@ -5,7 +5,7 @@ features.each do |feature|
   )
 end
 
-10.times do |n|
+20.times do |n|
   name = Faker::Sports::Football.player
   email = Faker::Internet.email
   password = "password"
