@@ -10,9 +10,13 @@
           <p>名前 : <%= @user.name %></p>
           <p>メールアドレス : <%= @user.email %></p><br><br>
           <p>チーム名 </p>
-          <% @user.teams.each do |team| %>
-          <%= team.name %>
-          <%= link_to "詳細", team_path(team.id) %><br>
+          <% if @user.teams.empty? %>
+            <%= "現在登録されたチームはありません" %>
+          <% else %>
+            <% @user.teams.each do |team| %>
+            <%= team.name %>
+            <%= link_to "詳細", team_path(team.id) %><br>
+            <% end %>
           <% end %><br>
 
           <div class="actions has-text-centered">
