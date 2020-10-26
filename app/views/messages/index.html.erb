@@ -1,22 +1,24 @@
 <section class="section">
   <div class="container">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-4">
+      <div class="column is-5">
+        <div class="title">
         <% if @conversation.recipient_id == current_user.id %>
           <%= User.find(@conversation.sender_id).name %>
         <% else %>
           <%= User.find(@conversation.recipient_id).name %>
-        <% end %><br>
-        <% if @over_ten %>
-        <%= link_to '以前のメッセージ', '?m=all' %>
         <% end %>
+      </div>
+        <% if @over_ten %>
+        <%= link_to '以前のメッセージ', '?m=all', class: "button is-info" %>
+        <% end %><br><br>
         <div class="ui segment">
           <% @messages.each do |message| %>
           <% if message.body.present? %>
           <% if message.user.id == current_user.id %>
-            <div class="box has-text-left">
+            <div class="box2 has-text-left">
           <% else %>
-            <div class="box has-text-right">
+            <div class="box2 has-text-right">
           <% end %>
               <div class="item">
                 <div class="content">
@@ -36,7 +38,7 @@
                           <%= message.read ? '既読' : '未読' %>
                         <% end %>
                       </div>
-                    </div><br>
+                    </div>
                   <% else %>
                     <div class="list">
                       <div class="item">
@@ -47,19 +49,19 @@
                   <% end %>
                 </div>
               </div>
-            </div>
+            </div><br>
             <% end %>
             <% end %>
           </div>
 
-          <div class="box has-text-centered mt-6">
+          <div class="box2 has-text-centered mt-6">
             <%= form_with(model: [@conversation, @message]) do |f| %>
               <div class="field">
-                <%= f.text_area :body, class: "form-control textarea" %>
+                <%= f.text_area :body, class: "form-control textarea is-black" %>
               </div>
             <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
               <div class="actions has-text-centered">
-                <%= f.submit "メッセージを送る", class: "button is-success is-light is-outlined" %>
+                <%= f.submit "メッセージを送る", class: "button is-success" %>
               </div>
             <% end %>
           </div>

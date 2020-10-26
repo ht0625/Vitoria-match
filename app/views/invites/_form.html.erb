@@ -3,6 +3,7 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-6">
+        <div class="box2">
         <%= form_with(model: @invite, local: true) do |form| %>
 
         <% if @invite.errors.any? %>
@@ -13,10 +14,10 @@
             <li><%= msg %></li>
             <% end %>
           </ul>
-        </div>
+        </div><br>
 
         <% end %>
-        <div class="box">
+
           <%= form.label 'チーム選択', class: "label" %>
           <% if current_user.teams.empty? %>
           <p>募集を作成するにはチーム登録が必要です</p>
@@ -40,12 +41,12 @@
 
         <div class="field">
           <%= form.label  '会場', class: "label" %>
-          <%= form.text_field :place, class: "input" %>
+          <%= form.text_field :place, class: "input is-black" %>
         </div>
 
         <div class="field">
           <%= form.label '募集詳細', class: "label" %>
-          <%= form.text_area :detail, class: "textarea" %>
+          <%= form.text_area :detail, class: "textarea is-black" %>
         </div>
 
         <% if action_name == 'edit' %>
@@ -61,7 +62,7 @@
           <%= form.submit '更新', class: "button is-info is-light is-outlined" %>
           <%= link_to '削除', invite_path(@invite.id), method: :delete, data: { confirm: '本当に編集していいですか？' }, class: "button is-danger is-light is-outlined" %>
           <% else %>
-          <%= form.submit '登録', class: "button is-info is-light is-outlined " %>
+          <%= form.submit '登録', class: "button is-info" %>
           <% end %>
         </div>
 

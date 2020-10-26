@@ -5,58 +5,58 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-4">
+        <div class="box2">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="user-name">
+            <%= f.label :name %>
+            <p class="control has-icons-left">
+              <%= f.text_field :name, autofocus: true, placeholder: "name", class: "input is-black" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </p>
+          </div>
 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="user-name">
-          <%= f.label :name %>
-          <p class="control has-icons-left">
-            <%= f.text_field :name, autofocus: true, placeholder: "name", class: "input" %>
-            <span class="icon is-small is-left">
-              <i class="fas fa-user"></i>
-            </span>
-          </p>
-        </div>
+          <div class="user_email">
+            <%= f.label :email %>
+            <p class="control has-icons-left">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "input is-black" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </p>
+          </div>
 
-        <div class="user_email">
-          <%= f.label :email %>
-          <p class="control has-icons-left">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "input" %>
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-          </p>
-        </div>
+          <div class="user_password">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+            <% end %>
+            <p class="control has-icons-left">
+              <%= f.password_field :password, autocomplete: "new-password", :placeholder => "password", class: "input is-black" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
 
-        <div class="user_password">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+          <div class="field">
+            <%= f.label :password_confirmation %>
+            <p class="control has-icons-left">
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "password confirmation", class: "input is-black" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+          </div>
+
+
+          <div class="actions has-text-centered mt-6">
+            <%= f.submit t('.sign_up'), class: "button is-info" %>
+          </div>
           <% end %>
-          <p class="control has-icons-left">
-            <%= f.password_field :password, autocomplete: "new-password", :placeholder => "password", class: "input" %>
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </p>
         </div>
-
-        <div class="field">
-          <%= f.label :password_confirmation %>
-          <p class="control has-icons-left">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "password confirmation", class: "input" %>
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </p>
-        </div>
-
-
-        <div class="actions has-text-centered mt-6">
-          <%= f.submit t('.sign_up'), class: "button is-info" %>
-        </div>
-        <% end %>
-
       </div>
     </div>
   </div>

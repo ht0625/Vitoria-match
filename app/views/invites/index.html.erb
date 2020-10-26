@@ -1,46 +1,50 @@
-<div class="title has-text-centered mt-6">
-  <h2>募集一覧</h2>
+<div class="background-index">
+<div class="title has-text-centered pt-6">
+  <h2>対戦相手募集一覧</h2>
 </div>
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="columns is-mobile">
-          <div class="column is-6">
-            <%= link_to '募集作成', new_invite_path, class: "button is-info is-small" %>
-          </div>
-          <div class="column is-6">
-            <%= search_form_for @q do |f| %>
-            <div class="field is-grouped">
-              <p class="control is-expanded">
-                <div class="select is-small" >
-                  <%= f.select :team_features_label_cont, options_from_collection_for_select(Feature.all, :label, :label , 1) %>
-                </div>
-              </p>
-              <p class="control">
-                <%= f.submit "検索", class: "button is-info is-small" %>
-              </p>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-9">
+          <div class="box2">
+          <div class="columns is-mobile">
+            <div class="column is-6">
+              <%= link_to '募集作成', new_invite_path, class: "button is-info is-small" %>
             </div>
-            <% end %>
+            <div class="column is-6">
+              <%= search_form_for @q do |f| %>
+              <div class="field is-grouped">
+                <p class="control is-expanded">
+                  <div class="select is-small is-info" >
+                    <%= f.select :team_features_label_cont, options_from_collection_for_select(Feature.all, :label, :label , 1) %>
+                  </div>
+                </p>
+                <p class="control">
+                  <%= f.submit "検索", class: "button is-info is-small" %>
+                </p>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+          <% @invites.each do |invite| %>
+          <% if invite.status == true %>
+          <div class="box">
+            <p>チーム名 : <%= invite.team.name %></P>
+              <p>特徴 : <% invite.team.features.each do |feature| %>
+                <%= feature.label %>
+                <% end %></P>
+                <p>希望開始日時 : <%= invite.match_day.strftime('%Y/%m/%d %H:%M') %></P>
+                  <p>会場 : <%= invite.place %></P>
+                    <p>詳細 : <%= invite.detail %></P>
+                      <%= link_to '詳細', invite %><br><br>
+                    </div><br>
+                    <% end %>
+
+                    <% end %>
           </div>
         </div>
-
-        <% @invites.each do |invite| %>
-        <% if invite.status == true %>
-        <div class="box">
-          <p>チーム名 : <%= invite.team.name %></P>
-            <p>特徴 : <% invite.team.features.each do |feature| %>
-              <%= feature.label %>
-              <% end %></P>
-              <p>希望開始日時 : <%= invite.match_day.strftime('%Y/%m/%d %H:%M') %></P>
-                <p>会場 : <%= invite.place %></P>
-                  <p>詳細 : <%= invite.detail %></P>
-                    <%= link_to '詳細', invite %><br><br>
-                  </div><br>
-                  <% end %>
-
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </section>
+      </div>
+    </div>
+  </section>
+</div>
