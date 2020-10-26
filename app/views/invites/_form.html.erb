@@ -58,7 +58,7 @@
 
         <div class="actions has-text-centered">
           <% if action_name == 'edit' %>
-          <%= link_to "戻る", invite_path(@invite.id), class: "button is-primary is-light is-outlined" %>
+          <%= link_to "戻る", :back, class: "button is-primary is-light is-outlined" %>
           <%= form.submit '更新', class: "button is-info is-light is-outlined" %>
           <%= link_to '削除', invite_path(@invite.id), method: :delete, data: { confirm: '本当に編集していいですか？' }, class: "button is-danger is-light is-outlined" %>
           <% else %>
