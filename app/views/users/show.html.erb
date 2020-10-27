@@ -33,18 +33,22 @@
         <div class="second-title has-text-centered pb-3">
           <h1>募集履歴</h1>
         </div>
-        <% @invites.each do |invite| %>
-            <div class="box">
-              <p>チーム名 : <%= invite.team.name %></P>
-              <p>希望開始日時 : <%= invite.match_day.strftime('%Y/%m/%d %H:%M') %></P>
-              <p>会場 : <%= invite.place %></P>
-              <% if invite.status == true %>
-                <p>募集状況 : 募集中 </p>
-              <% else %>
-                <p>募集状況 : 募集終了 </p>
-              <% end %>
-                  <%= link_to '募集編集', edit_invite_path(invite.id) %>
-            </div>
+        <% if @invites.empty? == true %>
+          <div class="second-title has-text-centered pb-3">現在募集履歴はありません</div>
+        <% else %>
+            <% @invites.each do |invite| %>
+                <div class="box">
+                  <p>チーム名 : <%= invite.team.name %></P>
+                  <p>希望開始日時 : <%= invite.match_day.strftime('%Y/%m/%d %H:%M') %></P>
+                  <p>会場 : <%= invite.place %></P>
+                  <% if invite.status == true %>
+                    <p>募集状況 : 募集中 </p>
+                  <% else %>
+                    <p>募集状況 : 募集終了 </p>
+                  <% end %>
+                      <%= link_to '募集編集', edit_invite_path(invite.id) %>
+                </div>
+            <% end %>
         <% end %>
       </div>
       </div>
