@@ -17,8 +17,64 @@
 body {
   min-height: 100vh;
   color: black;
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  // background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  background: image-url('soccer3.jpg');
+  background-size: cover;
   font-family: sans-serif;
+}
+.alert{
+  background-color: #363636;
+  color: white;
+}
+.box {
+    background-color: white;
+    border: 1px solid;
+    border-radius: 6px;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.4), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+    color: black;
+    display: block;
+    padding: 1.25rem;
+}
+.box2 {
+    background-color: #dcdbdbe3;
+    border: 1px solid;
+    border-radius: 6px;
+    box-shadow: 0 2.3em 2.5em -0.15em rgba(10, 10, 10, 1), 0 0px 0 1px rgba(10, 10, 10, 1);
+    color: black;
+    display: block;
+    padding: 1.25rem;
+}
+.background-index{
+  background: image-url('green3.jpg');
+  background-size:100% auto;
+}
+.title {
+  color: white;
+  font-size: 50px;
+  background-size:cover;
+  text-shadow    :
+     2px  2px 1px black,
+    -2px  2px 1px black,
+     2px -2px 1px black,
+    -2px -2px 1px black,
+     2px  0px 1px black,
+     0px  2px 1px black,
+    -2px  0px 1px black,
+     0px -2px 1px black;
+}
+.second-title{
+  color: white;
+  font-size: 25px;
+  background-size:cover;
+  text-shadow    :
+     2px  2px 1px black,
+    -2px  2px 1px black,
+     2px -2px 1px black,
+    -2px -2px 1px black,
+     2px  0px 1px black,
+     0px  2px 1px black,
+    -2px  0px 1px black,
+     0px -2px 1px black;
 }
 a {
   color: blue;
