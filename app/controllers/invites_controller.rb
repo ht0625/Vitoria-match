@@ -5,7 +5,7 @@ class InvitesController < ApplicationController
 
   def index
     @q = Invite.ransack(params[:q])
-    @invites = @q.result(distinct: true)
+    @invites = @q.result(distinct: true).order(match_day: "ASC")
   end
 
   def new
