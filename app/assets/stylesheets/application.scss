@@ -45,6 +45,7 @@ body {
     padding: 1.25rem;
 }
 .background-index{
+  min-height: 100vh;
   background: image-url('green3.jpg');
   background-size:100% auto;
 }
@@ -79,4 +80,16 @@ body {
 a {
   color: blue;
   text-decoration: none;
+}
+.pagination-link {
+    border-color: #dbdbdb;
+    color: #363636;
+    min-width: 2.5em;
+    background-color: white;
+}
+.pagination-previous, .pagination-next {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    white-space: nowrap;
+    background-color: white;
 }
