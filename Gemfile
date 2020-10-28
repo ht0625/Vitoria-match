@@ -16,6 +16,7 @@ gem 'devise-i18n'
 gem 'ransack'
 gem "bulma-rails", "~> 0.9.0"
 gem 'faker'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
