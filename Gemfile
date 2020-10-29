@@ -18,6 +18,7 @@ gem "bulma-rails", "~> 0.9.0"
 gem 'faker'
 gem 'kaminari'
 gem 'rails_admin', '~> 2.0'
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
