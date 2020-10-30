@@ -55,7 +55,7 @@
           </div>
 
           <div class="box2 has-text-centered mt-6">
-            <%= form_with(model: [@conversation, @message]) do |f| %>
+            <%= form_with(model: [@conversation, @message], local: true) do |f| %>
               <div class="field">
                 <%= f.text_area :body, class: "form-control textarea is-black" %>
               </div>

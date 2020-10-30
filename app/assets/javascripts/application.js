@@ -12,12 +12,13 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require turbolinks
 //= require_tree .
 
 
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('turbolinks:load', function () {
 
   // Dropdowns in navbar
 
