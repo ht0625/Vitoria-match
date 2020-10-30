@@ -11,23 +11,30 @@
 
   <body>
     <header>
-      <nav class="navbar is-dark">
+      <nav class="navbar is-dark is-fixed-top">
         <div class="navbar-brand">
           <p class="navbar-item">Vitoria-match</p>
+          <a class="navbar-burger burger" data-target="my-menu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+          </a>
         </div>
-        <div class="navbar-end">
-          <% if user_signed_in? %>
-          <% if current_user.admin? %>
-            <%= link_to "管理者画面", rails_admin_path, class: "navbar-item" %>
-          <% end %>
-            <%= link_to "プロフィール", user_path(current_user.id), class: "navbar-item" %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "navbar-item" %>
-            <%= link_to "募集作成", new_invite_path, class: "navbar-item" %>
-          <% else %>
-            <%= link_to "新規登録", new_user_registration_path, class: "navbar-item" %>
-            <%= link_to "ログイン", new_user_session_path, class: "navbar-item" %>
-          <% end %>
-            <%= link_to "募集一覧", invites_path, class: "navbar-item" %>
+        <div id="my-menu" class="navbar-menu">
+          <div class="navbar-end">
+            <% if user_signed_in? %>
+            <% if current_user.admin? %>
+              <%= link_to "管理者画面", rails_admin_path, class: "navbar-item" %>
+            <% end %>
+              <%= link_to "プロフィール", user_path(current_user.id), class: "navbar-item" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "navbar-item" %>
+              <%= link_to "募集作成", new_invite_path, class: "navbar-item" %>
+            <% else %>
+              <%= link_to "新規登録", new_user_registration_path, class: "navbar-item" %>
+              <%= link_to "ログイン", new_user_session_path, class: "navbar-item" %>
+            <% end %>
+              <%= link_to "募集一覧", invites_path, class: "navbar-item" %>
+          </div>
         </div>
       </nav>
     </header>

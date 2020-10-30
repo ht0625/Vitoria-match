@@ -49,6 +49,7 @@
                       <%= link_to '募集編集', edit_invite_path(invite.id) %>
                 </div>
             <% end %>
+            <%= paginate @invites %>
         <% end %>
       </div>
       </div>
