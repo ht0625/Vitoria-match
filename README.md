@@ -35,18 +35,10 @@ https://docs.google.com/spreadsheets/d/1zzqUUktQHLwhF8ZbDbESJonUgYUjsISGzYl0Waqa
 https://docs.google.com/spreadsheets/d/1_tWGMHK5yoYYcIaq7f-kMKD2cesZEjTSwposoM7n_Hk/edit?usp=sharing
 
 
-## 使用予定Gem
+## 使用Gem
 * devise
 * ransack
 * kaminari
 * rails_admin
 * cancancan
-
-## 卒業要件
-
-#### 就業Termから2つ
-* devise
-* メッセージ機能
-
-#### カリキュラム外の技術
-* ransack
+* bulma-rails
