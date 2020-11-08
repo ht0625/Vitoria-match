@@ -5,7 +5,7 @@ RSpec.describe 'チーム管理機能', type: :system do
     visit new_user_session_path
     fill_in 'user[email]', with: 'test1@example.com'
     fill_in 'user[password]', with: 'test01'
-    click_on 'commit'
+    click_on 'sign_in'
   end
   describe 'チーム新規登録機能' do
     context 'チームを新規登録した場合' do

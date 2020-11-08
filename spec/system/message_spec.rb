@@ -8,7 +8,7 @@ RSpec.describe 'メッセージ機能', type: :system do
     visit new_user_session_path
     fill_in 'user[email]', with: 'test2@example.com'
     fill_in 'user[password]', with: 'test02'
-    click_on 'commit'
+    click_on 'sign_in'
   end
   describe 'メッセージ送信機能' do
     context 'メッセージを新規で送信した場合' do

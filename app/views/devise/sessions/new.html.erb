@@ -36,12 +36,21 @@
           <% end %>
 
           <div class="actions actions has-text-centered mt-5">
-            <%= f.submit t('.sign_in'), class: "button is-info" %>
+            <%= f.submit t('.sign_in'), class: "button is-info", id: "sign_in" %>
           </div>
           <% end %>
 
           <!-- <%= render "devise/shared/links" %> -->
         </div>
+      </div>
+    </div>
+    <div class="columns is-centered mt-6">
+      <div class="column is-6 has-text-centered">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.hidden_field :email, value: 'testuser@example.com' %>
+            <%= f.hidden_field :password, value: 'testuser' %>
+            <%= f.submit 'テストユーザーでログイン', class: 'button is-danger' %>
+        <% end %>
       </div>
     </div>
   </div>

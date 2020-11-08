@@ -27,7 +27,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         visit new_user_session_path
         fill_in 'user[email]', with: 'test1@example.com'
         fill_in 'user[password]', with: 'test01'
-        click_on 'commit'
+        click_on 'sign_in'
         visit user_path(user.id)
         click_on '編集'
         fill_in 'user[name]', with: '更新名前'
@@ -43,7 +43,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       visit new_user_session_path
       fill_in 'user[email]', with: 'test1@example.com'
       fill_in 'user[password]', with: 'test01'
-      click_on 'commit'
+      click_on 'sign_in'
     end
     context '登録したユーザーでログインした場合' do
       it 'ログインできること' do
