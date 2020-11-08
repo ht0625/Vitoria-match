@@ -38,14 +38,16 @@
         </div>
       </nav>
     </header>
-
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
-
+    <div class="columns mt-6">
+      <div class="column is-12">
+        <% if notice %>
+          <p class="alert alert-notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-error"><%= alert %></p>
+        <% end %>
+      </div>
+    </div>
     <%= yield %>
 
   </body>
