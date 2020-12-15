@@ -26,6 +26,11 @@
                 <% end %>
               </div>
             </div>
+            <div class="columns is-mobile">
+              <div class="column is-6 is-offset-6 has-text-right">
+                <%= link_to 'クリア', request.path, class: "button is-danger is-small" %>
+              </div>
+            </div>
 
           <% @invites.each do |invite| %>
             <% if invite.status == true %>
