@@ -13,6 +13,18 @@
               </div>
               <div class="column is-6">
                 <%= search_form_for @q do |f| %>
+                  <div class="field is-grouped place_search">
+                    <p class="control is-expanded">
+                      <div>
+                        <%= f.search_field :place_cont, class: "input is-small is-info", placeholder: "例）千葉"%>
+                      </div>
+                    </p>
+                    <p class="control">
+                      <%= f.submit "会場検索", class: "button is-info is-small" %>
+                    </p>
+                  </div>
+                <% end %>
+                <%= search_form_for @q do |f| %>
                   <div class="field is-grouped">
                     <p class="control is-expanded">
                       <div class="select is-small is-info" >
@@ -24,6 +36,11 @@
                     </p>
                   </div>
                 <% end %>
+              </div>
+            </div>
+            <div class="columns is-mobile">
+              <div class="column is-6 is-offset-6 has-text-right">
+                <%= link_to 'クリア', request.path, class: "button is-danger is-small" %>
               </div>
             </div>
 
