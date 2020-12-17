@@ -34,7 +34,7 @@
             <%= form.label '希望開始日時', class: "label" %>
             <!-- <div class="select is-small">
             <div class="field is-horizontal"> -->
-            <%= form.datetime_select :match_day %>
+            <%= form.datetime_select :match_day, minute_step: 10 %>
             <!-- </div>
           </div> -->
         </div>
